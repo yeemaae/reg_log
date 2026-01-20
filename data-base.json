@@ -1,31 +1,13 @@
 {
   "users": [
     {
-      "username": "coder_cat",
+      "username": "valid_test",
       "profile": {
-        "firstName": "Alice",
-        "lastName": "Wonderland",
-        "email": "alice@example.com"
+        "firstName": "valid",
+        "lastName": "test",
+        "email": "valid@test.com"
       },
-      "password": "hashshhshahshsahashahshahshashas"
-    },
-    {
-      "username": "Yerassylbek",
-      "profile": {
-        "firstName": "yera",
-        "lastName": "max",
-        "email": "email@gma.com"
-      },
-      "password": "159"
-    },
-    {
-      "username": "max",
-      "profile": {
-        "firstName": "max",
-        "lastName": "max",
-        "email": "maxm"
-      },
-      "password": "-7468743130686823798"
+      "password": "2495637988699970685"
     }
   ]
 }

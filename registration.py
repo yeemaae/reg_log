@@ -1,23 +1,45 @@
 import json
-
-with open('data-base.json') as f:
-    data = json.load(f)
+import re
 
 
-def registration():
+def registration(data):
+    username_pattern = r"^[a-zA-Z0-9._-]{4,20}$"
     username = input("please enter username: ")
+    if not re.fullmatch(username_pattern, username):
+        print(''' Username Invalid,
+    - At least 4 characters long, maximum 20.
+    - Can contain letters (a-z, A-Z), numbers (0-9), dots (.), underscores (_), and hyphens (-).
+        ''')
+        return
+    name_pattern = r"^[A-Za-z]*$"
     firstname = input("please enter firstname: ")
+    if not re.fullmatch(name_pattern, firstname):
+        print("Invalid Firstname")
+        return
+
     lastname = input("please enter lastname: ")
+    if not re.fullmatch(name_pattern, lastname):
+        print("Invalid Lastname")
+        return
+
+    email_pattern = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
     email = input("please enter email: ")
-    password = hash(input("please enter password: "))
-    repassword = hash(input("please confirm the password: "))
+    if not re.fullmatch(email_pattern, email):
+        print("Invalid email")
+        return
+    pass_pattern = r'[A-Za-z0-9@#$%^&+=]{8,}'
+    password = input("please enter password: ")
+    if not re.fullmatch(pass_pattern, password):
+        print("Invalid password")
+        return
+    repassword = input("please confirm the password: ")
 
     newuser = dict(username=username,
                    profile=dict(firstName=firstname,
                                 lastName=lastname,
                                 email=email))
     if password == repassword:
-        newuser['password'] = str(password)
+        newuser['password'] = str(hash(password))
     else:
         print("Your password Not match! pls try again!")
         return
@@ -30,3 +52,4 @@ def registration():
     data['users'].append(newuser)
     with open('data-base.json', 'w') as f:
         json.dump(data, f)
+    print(f"REGISTRATION DONE {username}")

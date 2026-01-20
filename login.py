@@ -1,23 +1,17 @@
-import json
-
-with open('data-base.json') as f:
-    data = json.load(f)
-
-
-def login():
+def login(data):
     username = input("please enter username: ")
     password = hash(input("please enter password: "))
 
-    user = None
+    incorrect = False
     for user in data['users']:
+        incorrect = True
         if user['username'] == username:
-            user = user
-    if user:
-        if user['password'] == str(password):
-            print(f'Welcome back {username}')
-        else:
-            print(user['password'])
-            print(str(password))
-            print('username or password is incorrect!')
-    else:
+            if user['password'] == str(password):
+                print(f'Welcome back {username}')
+                return
+            else:
+                print('username or password is incorrect!')
+                return
+    if incorrect:
         print('username or password is incorrect!')
+        return
