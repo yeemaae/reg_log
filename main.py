@@ -16,6 +16,13 @@ def main(data):
 
 if __name__ == '__main__':
     while True:
-        with open('data-base.json') as f:
-            data = json.load(f)
-        main(data)
+        try:
+            with open('data-base.json') as f:
+                data = json.load(f)
+            main(data)
+        except FileNotFoundError:
+            data = {
+                "users": []
+            }
+            with open('data-base.json', 'w') as f:
+                json.dump(data, f, ensure_ascii=False, indent=4)
