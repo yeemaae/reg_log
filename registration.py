@@ -25,7 +25,7 @@ def firstname_valid():
         firstname = input("please enter firstname: ")
         if not re.fullmatch(name_pattern, firstname):
             attempt += 1
-            print("Invalid Firstname")
+            print("Firstname Invalid: only letters (A–Z, a–z) are allowed. No numbers or symbols.")
         else:
             return firstname
         if attempt == 3:
@@ -39,7 +39,7 @@ def lastname_valid():
         lastname = input("please enter lastname: ")
         if not re.fullmatch(name_pattern, lastname):
             attempt += 1
-            print("Invalid Lastname")
+            print("Lastname Invalid: only letters (A–Z, a–z) are allowed. No numbers or symbols.")
         else:
             return lastname
         if attempt == 3:
@@ -53,7 +53,13 @@ def email_valid():
         email = input("please enter email: ")
         if not re.fullmatch(email_pattern, email):
             attempt += 1
-            print("Invalid email")
+            print(
+                "Email Invalid:\n"
+                "- Must be in a valid email format (example: user@example.com).\n"
+                "- Local part may contain letters, numbers, and . _ % + -\n"
+                "- Domain may contain letters, numbers, dots (.) and hyphens (-).\n"
+                "- Top-level domain must contain at least 2 letters."
+            )
         else:
             return email
         if attempt == 3:
@@ -67,7 +73,12 @@ def pass_valid():
         password = input("please enter password: ")
         if not re.fullmatch(pass_pattern, password):
             attempt += 1
-            print("Invalid password")
+            print(
+                "Password Invalid:\n"
+                "- Must be at least 8 characters long.\n"
+                "- Allowed characters: letters (A–Z, a–z), numbers (0–9), and symbols @ # $ % ^ & + =.\n"
+                "- Spaces and other special characters are not allowed."
+            )
         else:
             return password
         if attempt == 3:

@@ -5,7 +5,7 @@ import json
 
 
 def main(data):
-    action = input("Welcome to console app! What u want to do? registration or login?")
+    action = input("Welcome to console app! What u want to do? registration or login? 0 | 1")
     if action == "0" or action == "registration":
         registration.registration(data)
     elif action == "1" or action == 'login':
